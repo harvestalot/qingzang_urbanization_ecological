@@ -1,0 +1,183 @@
+/*header start*/
+.header{
+	height: 8%;
+}
+.title_content{
+	display: table;
+	height: 100%;
+	margin-left: 20px;
+}
+.header .title{
+	height: 100%;
+	vertical-align: middle;
+	display: table-cell;
+	text-align: center;
+	font-size: 28px;
+}
+.nav li{
+	display: table;
+	position: relative;
+	width: 200px;
+	height: 100%;
+	cursor: pointer;
+}
+.nav li a{
+	height: 100%;
+	vertical-align: middle;
+	display: table-cell;
+	text-align: center;
+	font-size: 18px;
+}
+.nav li:hover .nav_item{
+	color: #EA9F04;
+}
+.nav li:hover .subnav_content{
+	display: block;
+}
+.nav li .nav_item.nav_item_active{
+	color: #EA9F04;
+}
+.subnav_absolute{
+	position: absolute;
+	left: 0;
+	top: 100%;
+	z-index: 9999;
+}
+.subnav_content{
+  	width: 200px;
+  	display: none;
+}
+.subnav_content > div:first-child {
+  /*text-align: center;*/
+  height: 40px;
+  line-height: 40px;
+  padding-left: 30px;
+  padding-right: 10px;
+  background-color: #DAC57B;
+  border-bottom: 1px solid  #cdb0b0;
+  transition: background-color 0.4s linear;
+}
+.subnav_content > div:first-child:hover {
+  background-color: #F8FF0D;
+}
+.subnav_content > div:first-child > i:last-child {
+  line-height: 40px;
+  float: right;
+  transform: rotate(0deg);
+  transition: transform 0.4s linear;
+}
+.subnav_content > .subnav {
+  width: 200px;
+  display: none;
+}
+.subnav_content > .subnav > a {
+	display: block;
+  	background-color: #C79E1A;
+  	transition: background-color 0.1s linear;
+  	text-align: center;
+  	line-height: 40px;
+  	border-bottom: 1px solid #e6e6e6;
+}
+.subnav_content > .subnav > a:hover {
+  background-color: #FAFF61!important;
+}
+.subnav_content:first-child > div:first-child {
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+.subnav_content:last-child > div:first-child {
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+.subnav_content:last-child::after {
+  display: block;
+  clear: both;
+}
+/*header end*/
+
+/*content start*/
+.content{
+	height: 92%;
+}
+.content .top{
+	height: 75%;
+}
+.content .bottom{
+	height: 25%;
+}
+.top .left{
+	width: 25%;
+	height: 100%;
+}
+.top .center{
+	width: 50%;
+}
+.top .right{
+	width: 25%;
+	height: 100%;
+}
+.module_item{
+	width: 100%;
+	height: 32.3%;
+	margin-top: 10px;
+	background-color: #313131;
+}
+.module_item h2{
+	padding: 10px 10px;
+	font-size: 14px;
+}
+.module_item:first-child{
+	margin-top: 0;
+}
+/*人口都市圈*/
+.population{
+
+}
+/*地图*/
+/*.mark_city_box{
+	left: 0;
+	top: 0;
+}*/
+.mark_city_item{
+	position: absolute;
+	width: 100px;
+	height: 32px;
+	line-height: 32px;
+	border-radius: 4px;
+	background-color: rgba(0,0,0,.5);
+	text-align: center;
+	font-size: 18px;
+	font-weight: 700;
+	display: none;
+}
+.lanxi_city_cluster {
+	right: 1%;
+	top: 30%;
+	color: #FFC846;
+}
+.lasa_metropolitan_area{
+	left: 45%;
+	bottom: 30%;
+	color: #FF2674;
+}
+.border_city_zone{
+	left: 25%;
+	bottom: 15%;
+	color: #FF6C0E;
+}
+/*城镇化指数*/
+.urbanization{
+}
+/*水资源数据层*/
+.water_data_layer{
+	position: absolute;
+	left: 37%;
+	top: 0%;
+	width: 40%;
+	height: 32.3%;
+	/*background-color:rgba(49,49,49,.5);*/
+	background-color:rgb(49,49,49);
+	display: none;
+	z-index: 99999;
+}
+/*content end

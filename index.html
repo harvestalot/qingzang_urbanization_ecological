@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>城市化与生态环境迫协可视化</title>
+	<link rel="stylesheet" type="text/css" href="./css/base.css">
+	<link rel="stylesheet" type="text/css" href="./css/index.css">
+</head>
+<body>
+	<section class="w100 h100">
+		<header class="clearfix header main_color_lump">
+			<div class="fl title_content">
+				<div class="title">城市化与生态环境迫协可视化</div>
+			</div>
+			<div id="nav" class="fl h100 nav">
+				<ul class="clearfix h100">
+					<li class="fl">
+						<a href="#" class="nav_item nav_item_active">青藏高原</a>
+					</li>
+					<li class="fl nav_have_subnav">
+						<a href="#" class="nav_item">拉萨城市群</a>
+						<div class="subnav_absolute">
+							<div class="subnav_content">
+								<div><span>城镇化</span></div>
+								<div class="subnav" name="xz">
+									<a href="javascript:void(0)">研究成果一</a>
+									<a href="javascript:void(0)">研究成果二</a>
+									<a href="javascript:void(0)">研究成果三</a>
+									<a href="javascript:void(0)">研究成果四</a>
+								</div>
+							</div>
+							<div class="subnav_content">
+								<div><span>生态环境</span></div>
+								<div class="subnav" name="xz">
+									<a href="javascript:void(0)">研究成果一</a>
+									<a href="javascript:void(0)">研究成果二</a>
+									<a href="javascript:void(0)">研究成果三</a>
+								</div>
+							</div>
+							<div class="subnav_content">
+								<div><span>影响与调控</span></div>
+								<div class="subnav" name="xz">
+									<a href="javascript:void(0)">研究成果一</a>
+									<a href="javascript:void(0)">研究成果二</a>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li class="fl nav_have_subnav">
+						<a href="#" class="nav_item">兰西城市群</a>
+						<div class="subnav_absolute">
+							<div class="subnav_content">
+								<div><span>城镇化</span></div>
+								<div class="subnav" name="xz">
+									<a href="javascript:void(0)">研究成果一</a>
+									<a href="javascript:void(0)">研究成果二</a>
+									<a href="javascript:void(0)">研究成果三</a>
+								</div>
+							</div>
+							<div class="subnav_content">
+								<div><span>生态环境</span></div>
+								<div class="subnav" name="xz">
+									<a href="javascript:void(0)">研究成果一</a>
+									<a href="javascript:void(0)">研究成果二</a>
+									<a href="javascript:void(0)">研究成果三</a>
+								</div>
+							</div>
+							<div class="subnav_content">
+								<div><span>影响与调控</span></div>
+								<div class="subnav" name="xz">
+									<a href="javascript:void(0)">研究成果一</a>
+									<a href="javascript:void(0)">研究成果二</a>
+									<a href="javascript:void(0)">研究成果三</a>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li class="fl nav_have_subnav">
+						<a href="#" class="nav_item">边境城市带</a>
+					</li>
+				</ul>
+			</div>
+		</header>
+		<section class="base_pd pd_t content box_size_bd">
+			<section class="h100">
+				<section class="top po_re">
+					<section class="fl left box_size_bd">
+						<section class="population module_item h100">
+							<!-- <h2>城市群人口</h2> -->
+							<section id="population" class="h100"></section>
+						</section>
+						<section id="economy" class="economy module_item h100"></section>
+						<section id="urban_land" class="urban_land module_item h100"></section>
+					</section>
+					<section class="fl center base_pd box_size_bd h100 po_re">
+						<section id="map" class="h100"></section>
+						<!-- <section id="mark_city_box" class="po_ab w100 h100 mark_city_box"> -->
+							<span class="mark_city_item lasa_metropolitan_area">拉萨都市圈</span>
+							<span class="mark_city_item border_city_zone">边境城市带</span>
+							<span class="mark_city_item lanxi_city_cluster">兰西城市群</span>
+						<!-- </section> -->
+					</section>
+					<section class="fr right box_size_bd">
+						<section id="water" class="water module_item h100"></section>
+						<section id="forest" class="forest module_item h100"></section>
+						<section id="vegetation_index" class="vegetation_index module_item h100"></section>
+					</section>
+					<section id="water_data_layer" class="water_data_layer"></section>
+				</section>
+				<section class="bottom pd_t box_size_bd">
+					<section id="urbanization" class="h100 main_color_lump urbanization"></section>
+				</section>
+			</section>
+		</section>
+	</section>
+	<div id="aaa"></div>
+	<script type="text/javascript" src="./lib/jquery-3.3.1.min.js"></script>
+	<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/echarts.min.js"></script>
+	<script type="text/javascript" src='./lib/echarts-liquidfill.min.js'></script>
+	<script type='text/javascript' src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/china.js"></script>
+
+	<script type="text/javascript" src="./json/population_data.js"></script><!-- 城市人口数据 -->
+	<script type="text/javascript" src="./json/economy_data.js"></script><!-- 经济数据 -->
+	<script type="text/javascript" src="./json/urban_land_data.js"></script><!-- 城镇用地数据 -->
+	<script type="text/javascript" src="./json/water_data.js"></script><!-- 水资源数据 -->
+	<script type="text/javascript" src="./json/forest_data.js"></script><!-- 森林面积数据 -->
+	<script type="text/javascript" src="./json/vegetation_index_data.js"></script><!-- NDVI数据 -->
+	<script type="text/javascript" src="./json/urbanization_data.js"></script><!-- 城镇化指数数据 -->
+	<!-- 青藏高原数据 -->
+	<script type='text/javascript' src='./json/qingzang_areas_data.js'  ></script>
+	<!-- 拉萨城市群数据 -->
+	<script type='text/javascript' src='./json/lasa_metropolitan_area_data.js'  ></script>
+	<!-- 兰西城市群数据 -->
+	<script type='text/javascript' src='./json/lanxi_city_cluster_data.js'  ></script>
+	<!-- 边境城市带数据 -->
+	<script type='text/javascript' src='./json/border_city_zone_data.js'  ></script>
+
+	<script type="text/javascript" src="./js/population.js"></script><!-- 城市人口 -->
+	<script type="text/javascript" src="./js/economy.js"></script><!-- 经济 -->
+	<script type="text/javascript" src="./js/urban_land.js"></script><!-- 城镇用地 -->
+	<script type="text/javascript" src="./js/water.js"></script><!-- 水资源 -->
+	<script type="text/javascript" src="./js/forest.js"></script><!-- 森林面积 -->
+	<script type="text/javascript" src="./js/vegetation_index.js"></script><!-- NDVI -->
+	<script type="text/javascript" src="./js/urbanization.js"></script><!-- 城市化指数 -->
+
+	<!--  中心地图 -->
+	<script type='text/javascript' src='./js/map.js' ></script>
+
+	<script type="text/javascript" src="./js/main.js"></script>
+	<script type="text/javascript" src="./js/index.js"></script>
+</body>
+</html>

@@ -1,0 +1,142 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    font-family: "microsoft yahei";
+}
+html,body{
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    background-color:#000;
+    color: #fff;
+}
+/*清除浏览器默认样式�*/
+fieldset,
+img,
+input,
+button {
+    border: none;
+    padding: 0;
+    margin: 0;
+    outline-style: none;
+    background-color: transparent;
+    font-family: "microsoft yahei";
+}
+
+input {
+    padding-top: 0;
+    padding-bottom: 0;
+    vertical-align: middle;
+    border: 0;
+    outline: none;
+}
+
+input:required:invalid {
+    box-shadow: none;
+    -moz-box-shadow: none;
+}
+
+input:focus {
+    outline: none;
+}
+/* 来自yahoo，让标题都自定义，适应多个系统应用 */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-size: 100%;
+    font-weight: 500;
+}
+/* 去掉列表前的标识，li 会继承 */
+
+ol,
+ul {
+    list-style: none;
+}
+/* 让链接在 hover 状态下显示下划线 */
+a:hover {
+    /*text-decoration:underline;*/
+    outline: none;
+}
+/* 默认不显示下划线，保持页面简洁 */
+ins,
+a {
+    text-decoration: none;
+    color: #fff;
+}
+/* 清除浮动 */
+
+.clearfix:before,
+.clearfix:after {
+    content: "";
+    display: table;
+}
+
+.clearfix:after {
+    clear: both;
+    overflow: hidden;
+}
+
+.clearfix {
+    zoom: 1;
+    /* for ie6 & ie7 */
+}
+
+.clear {
+    clear: both;
+    display: block;
+    font-size: 0;
+    height: 0;
+    line-height: 0;
+    overflow: hidden;
+}
+.h100{
+	height: 100%;
+}
+.w50{
+    width: 50%;
+}
+.w100{
+	width: 100%;
+}
+.base_pd{
+	padding: 0 10px;
+}
+.pd_t{
+	padding-top: 10px;
+}
+.pd_b{
+	padding-bottom: 10px;
+}
+.fl {
+    float: left;
+}
+
+.fr {
+    float: right;
+}
+.tl {
+    text-align: left;
+}
+
+.tc {
+    text-align: center;
+}
+
+.tr {
+    text-align: right;
+}
+.main_color_lump{
+	background-color: #313131;
+}
+.box_size_bd{
+	box-sizing: border-box;
+}
+.po_re{
+    position: relative;
+}
+.po_ab{
+    position: absolute;
+}
