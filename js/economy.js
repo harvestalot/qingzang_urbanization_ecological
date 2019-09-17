@@ -4,6 +4,7 @@ function economy(id, current_screen, current_year) {
 	var economy_data = current_year < 2000? []: economyData[current_screen][current_year];
 
 	var option = {
+        color:echarts_color,
 	    title : {
 	        text: '经济',
 	        left:5,
@@ -15,7 +16,7 @@ function economy(id, current_screen, current_year) {
 	    },
 	    tooltip : {
 	        trigger: 'item',
-	        formatter: "{a} <br/>{b} : {c}万亿  ({d}%)"
+	        formatter: "{a} <br/>{b} : {c}亿元  ({d}%)"
 	    },
 	    // legend: {
 	    //     orient: 'vertical',

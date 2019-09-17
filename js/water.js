@@ -24,7 +24,8 @@ function water(id, current_screen, current_year){
 	            fontWeight: 'normal',
 	            fontSize: 14
 	        },
-	        subtext: (water_data.total_consumption / water_data.total_storage * 100).toFixed(2) + '%',
+            subtext: (water_data.total_storage > 0?
+                (water_data.total_consumption / water_data.total_storage * 100).toFixed(2):0) + '%',
 	        subtextStyle: {
 	            color: '#fff',
 	            fontSize: 12
@@ -143,22 +144,12 @@ function water_details(current_screen, current_year,current_name, water_data){
             bottom: 10
         },
         yAxis: {
-            axisLine: {
-                show: true,
-                lineStyle: {
-                    color: "#00c7ff",
-                    width: 1,
-                    type: "solid"
-                },
-            },
+	        axisLabel: coordinate_axis_style.axisLabel,
+	        axisLine: coordinate_axis_style.axisLine,
+	        splitLine: coordinate_axis_style.splitLine,
             axisTick: {
                 show: false
             },
-            splitLine: {
-                lineStyle: {
-                    color: "#063374",
-                }
-            }
         },
         xAxis: {
             data: water_data.bar_x_data,

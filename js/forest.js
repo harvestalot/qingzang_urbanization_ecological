@@ -2,6 +2,7 @@ function forest(id, current_screen, current_year){
 	var myChart = echarts.init(document.getElementById(id));
 	var forest_data = forestData[current_screen][current_year]? forestData[current_screen][current_year]: [];
 	var option = {
+        color:echarts_color,
 	    title: [
 	    {
 	        text: '森林',

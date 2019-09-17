@@ -1,7 +1,7 @@
 function population (id, current_screen, current_year){
 	var myChart = echarts.init(document.getElementById(id));
 	var population_data = current_year < 2000? []: populationData[current_screen][current_year];
-	console.log(city_name[current_screen])
+	// console.log(city_name[current_screen])
 	var option = {
 	    title : {
 	        text: '人口(万人)',
@@ -35,11 +35,7 @@ function population (id, current_screen, current_year){
 	        type: 'value',
 	        axisLabel: coordinate_axis_style.axisLabel,
 	        axisLine: coordinate_axis_style.axisLine,
-	        splitLine: {
-	            lineStyle: {
-	                color: "#063374",
-	            }
-	        }
+	        splitLine: coordinate_axis_style.splitLine,
 	    }],
 	    // dataZoom: [
 	    //     {

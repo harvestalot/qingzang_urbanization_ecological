@@ -29,36 +29,13 @@ function vegetation_index(id, current_screen, current_year){
 	        data: vegetation_index_data.city_name,
 	        axisLabel: coordinate_axis_style.axisLabel,
 	        axisLine: coordinate_axis_style.axisLine,
-	        axisTick: {
-	            show: true,
-	            lineStyle: {
-	                color: "#666"
-	            }
-	        },
-	        splitLine: {
-	            show: true,
-	            lineStyle: {
-	                color: '#666'
-	            }
-	        }
 	    },
 	    yAxis: [{
 	        type: 'value',
 	        position: 'right',
 	        axisLabel: coordinate_axis_style.axisLabel,
 	        axisLine: coordinate_axis_style.axisLine,
-	        axisTick: {
-	            show: true,
-	            lineStyle: {
-	                color: "#666",
-	            }
-	        },
-	        splitLine: {
-	            show: true,
-	            lineStyle: {
-	                color: '#666'
-	            }
-	        },
+	        splitLine: coordinate_axis_style.splitLine,
 	    }],
 	    series: [{
 	        name: 'NDVI',

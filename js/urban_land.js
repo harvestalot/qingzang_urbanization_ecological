@@ -34,14 +34,9 @@ function urban_land(id, current_screen, current_year) {
 				// min: 0,//y轴上的刻度最小值
 				// max:140,//y轴上的刻度最大值
 				// splitNumber: 7,//y轴上的刻度段数
-				splitLine: {//y轴上的y轴线条相关设置
-					 show: true,
-					 lineStyle: {
-						 color: '#233e64'
-					 }
-				},
 	        	axisLabel: coordinate_axis_style.axisLabel,
 	        	axisLine: coordinate_axis_style.axisLine,
+                splitLine: coordinate_axis_style.splitLine,
 			}],
 			series: [{
 				name: '城镇用地',
