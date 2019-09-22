@@ -1,7 +1,8 @@
 //地图
+var myMapChart 
 function map(id, current_screen, current_year){
     current_screen !== 0? $(".mark_city_item").hide():"";
-    var myChart = echarts.init(document.getElementById(id));
+    myMapChart = echarts.init(document.getElementById(id));
     let map_name = "QZ", label_name = "青藏高原";
     if(current_screen === 0){
         echarts.registerMap('QZ', qingzang_areas_data);
@@ -126,6 +127,6 @@ function map(id, current_screen, current_year){
             },
         ]
     }
-    myChart.setOption(option,true);
+    myMapChart.setOption(option,true);
     current_screen === 0? $(".mark_city_item").fadeIn(300):"";
 }

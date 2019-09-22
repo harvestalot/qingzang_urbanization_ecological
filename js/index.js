@@ -1,8 +1,5 @@
 
 $(function(){
-    var current_year = initial_year;
-    var timer_1 = null;
-    var timer_2 = null;
     $(".subnav_content > div:first-child").click(function () {
         $(this).parent().siblings(".subnav_content").children(".subnav").stop().slideUp(400);
         $(this).siblings("[name='xz']").slideToggle(400);
@@ -18,7 +15,7 @@ $(function(){
     timer_1 = setInterval(function(){
         current_year >= stop_year
             ?(current_year = initial_year)
-            :(current_year<2000?(current_year += 5):(current_year += 1));
+            :(current_year);
             // console.log(current_year)
         start_init.init_top(current_year);
     },play_interval);
@@ -32,9 +29,35 @@ $(function(){
 		start_init.init(index,initial_year);
         timer_2 = setInterval(function(){
             current_year >= stop_year
-                ?(current_year = initial_yearv)
-                :current_year<2000?(current_year += 5):(current_year += 1);
+                ?(current_year = initial_year)
+                :(current_year);
             start_init.init_top(current_year);
         },play_interval);
 	});
+    //控制时间轴
+    myUrbanizationChart.on('timelinechanged', function (params) {
+        current_year = all_yaer[params.currentIndex]
+    });
+    myUrbanizationChart.on('timelineplaychanged', function (params) {
+        console.log(params);
+        var timer_1 = null;
+        var timer_2 = null;
+    });
+    //点击地图切换
+    myMapChart.on('click', function (params) {
+        var index = 0;
+        if(params.data.name === "边境城市带"){
+        }else if(params.data.name === "拉萨都市圈"){
+            index = 1;
+        }else if(params.data.name === "兰西城市群"){
+            index = 2;
+        }else{
+            start_init.init(0,initial_year);
+        }
+        start_init.init(index,initial_year);
+        $("#nav li").eq(index).children(".nav_item").addClass("nav_item_active").parent()
+            .siblings("li").children(".nav_item").removeClass("nav_item_active");
+    });
+
+        console.log(current_year);
 });

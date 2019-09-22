@@ -1,6 +1,12 @@
 const initial_year = 2000;//初始年份
 const stop_year = 2015;//终止年份
+var current_year = initial_year;
+var timer_1 = null;
+var timer_2 = null;
+const all_yaer = [2000,2001,2002,2003,2004,2005,2006,
+    2007,2008,2009,2010,2011,2012,2013,2014,2015];
 const play_interval = 3000;//切换时间
+const play_index = 0;
 const echarts_color = ["#d66349",'#41FC86',"#f0993c",'#a57ec0',"#579dcb","#5cba89","#7758b0",
     "#A900E6", "#FF0000", "#0084A8", "#FFFF00", "#730000", "#FFAA00", "#FF73DF", "#FF7F7F",
     "#00A884", "#005CE6", "#73DFFF"];
@@ -100,4 +106,3 @@ VisualScreen.prototype.urbanization = function(){
 
 //初始化
 var	start_init = new VisualScreen();
-
