@@ -1,6 +1,8 @@
 //地图
+var myMapChart 
 function map(id, current_screen, current_year){
     current_screen !== 0? $(".mark_city_item").hide():"";
+<<<<<<< HEAD
     var myChart = echarts.init(document.getElementById(id));
 var img = new Image();
 var canvas = document.createElement('canvas');
@@ -20,6 +22,9 @@ img.onload = function() {
 img.src = './images/qingzang_bg.jpg'
 
 
+=======
+    myMapChart = echarts.init(document.getElementById(id));
+>>>>>>> b30a0b16d221e67fa53f94b7052a060bddcfb5e4
     let map_name = "QZ", label_name = "青藏高原";
     if(current_screen === 0){
         echarts.registerMap('QZ', qingzang_areas_data);
@@ -149,6 +154,6 @@ img.src = './images/qingzang_bg.jpg'
             },
         ]
     }
-    myChart.setOption(option,true);
+    myMapChart.setOption(option,true);
     current_screen === 0? $(".mark_city_item").fadeIn(300):"";
 }
