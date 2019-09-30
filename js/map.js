@@ -2,6 +2,24 @@
 function map(id, current_screen, current_year){
     current_screen !== 0? $(".mark_city_item").hide():"";
     var myChart = echarts.init(document.getElementById(id));
+var img = new Image();
+var canvas = document.createElement('canvas');
+var ctx = canvas.getContext('2d');
+
+canvas.width = myChart.getWidth() * window.devicePixelRatio*0.91;
+canvas.height = myChart.getHeight() * window.devicePixelRatio;
+
+var fullImage = new Image();
+img.onload = function() {
+    ctx.drawImage(img, 15, 60, canvas.width, canvas.height);
+    fullImage.src = canvas.toDataURL();
+    setTimeout(function() {
+        myChart.resize();
+    }, 100)
+}
+img.src = './images/qingzang_bg.jpg'
+
+
     let map_name = "QZ", label_name = "青藏高原";
     if(current_screen === 0){
         echarts.registerMap('QZ', qingzang_areas_data);
@@ -41,6 +59,11 @@ function map(id, current_screen, current_year){
         return res;
     };
     var option = {
+        backgroundColor: {
+          type: "pattern",
+          repeat: "no-repeat",
+          image: fullImage
+        },
         visualMap:[ 
             {
                 type:"piecewise",
@@ -51,7 +74,7 @@ function map(id, current_screen, current_year){
                     {min: 500, max: 500, color: '#FFE33A', colorAlpha: "1"},
                     {min: 800, max: 800, color: '#FF0E96', colorAlpha: "1"},
                     {min: 1000, max: 1000, color: '#FF6C0E', colorAlpha: "1"},
-                    {min: 2000, max: 2000, color: '#d1d1d1', colorAlpha: "0.5"},
+                    {min: 2000, max: 2000, color: '#d1d1d1', colorAlpha: "0"},
                 ],
                 realtime: false,
                 calculable: true,
