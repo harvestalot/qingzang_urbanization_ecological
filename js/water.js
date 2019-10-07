@@ -1,9 +1,11 @@
 //水资源
 function water(id, current_screen, current_year){
 	var myChart = echarts.init(document.getElementById(id));
-	var water_data = current_year < 2000? 
-        {total_consumption:0,total_storage:1,pie_data:[],bar_x_data:[],bar_data:{}}:
-        waterData[current_screen][current_year];
+	var water_data = current_screen  != 0?
+		waterData[current_screen]:waterData[current_screen][current_year];
+	// var water_data = current_year < 2000? 
+ //        {total_consumption:0,total_storage:1,pie_data:[],bar_x_data:[],bar_data:{}}:
+ //        waterData[current_screen][current_year];
     var title_name = '水资源';
 	var option = {
 	    title:[{
@@ -122,15 +124,72 @@ function water(id, current_screen, current_year){
 	        },
 	    ]
 	}
+	if(current_screen  != 0){
+		option = {
+	        color:echarts_color,
+		    title : {
+		        text: '水资源',
+		        left:5,
+		        top:5,
+		        textStyle:{
+		        	fontSize:14,
+		        	color:"#fff",
+		        }
+		    },
+		    tooltip : {
+		        trigger: 'item',
+		        formatter: "{a} <br/>{b} : {c}亿m³"
+		    },
+			grid: {//统计图距离边缘的距离
+				top: '20%',
+				left: '15%',
+				right: '10%',
+				bottom: '15%'
+			},
+		    xAxis:{
+				type: 'category',//数据类型为不连续数据
+        		position: "bottom",
+				boundaryGap: true,//坐标轴两边是否留白
+	        	axisLabel: coordinate_axis_style.axisLabel,
+	        	axisLine: coordinate_axis_style.axisLine,
+    	        data: water_data.city_name
+		   	},
+		    yAxis: {
+		        type: 'value',
+	        	axisLabel: coordinate_axis_style.axisLabel,
+	        	axisLine: coordinate_axis_style.axisLine,
+                splitLine: coordinate_axis_style.splitLine,
+		    },
+		    series : [
+		        {
+		            name: '水资源',
+		            type: 'bar',
+		            itemStyle: {
+		                normal: {
+		                    color: '#2EDDCD'
+		                },
+		                emphasis: {
+		                    color: '#2EDDCD'
+		                }
+		            },
+		            data:water_data.water_data[current_year],
+		        }
+		    ]
+		}
+	}
 
     myChart.setOption(option, true)
-    myChart.on("mousemove",function(params){
-        $("#water_data_layer").fadeIn(100);
-        water_details(current_screen, current_year,params.name,water_data)
-    })
-    myChart.on("mouseout",function(params){
-        $("#water_data_layer").fadeOut(100);
-    })
+    if(current_screen  == 0){
+	    myChart.on("mousemove",function(params){
+	        $("#water_data_layer").fadeIn(100);
+	        water_details(current_screen, current_year,params.name,water_data)
+	    })
+	    myChart.on("mouseout",function(params){
+	        $("#water_data_layer").fadeOut(100);
+	    })
+    }else{
+    	myChart.off("mousemove");
+    }
 }
 
 function water_details(current_screen, current_year,current_name, water_data){

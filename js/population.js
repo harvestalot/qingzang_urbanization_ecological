@@ -1,10 +1,10 @@
 function population (id, current_screen, current_year){
 	var myChart = echarts.init(document.getElementById(id));
-	var population_data = current_year < 2000? []: populationData[current_screen][current_year];
+	var population_data = populationData[current_screen];
 	// console.log(city_name[current_screen])
 	var option = {
 	    title : {
-	        text: '人口(万人)',
+	        text: '人口',
 	        left:5,
 	        top:5,
 	        textStyle:{
@@ -27,7 +27,8 @@ function population (id, current_screen, current_year){
 	    },
 	    xAxis: [{
 	        type: 'category',
-	        data: city_name[current_screen],
+			boundaryGap: true,//坐标轴两边是否留白
+	        data: population_data.city_name,
 	        axisLabel: coordinate_axis_style.axisLabel,
 	        axisLine: coordinate_axis_style.axisLine,
 	    }],
@@ -51,8 +52,8 @@ function population (id, current_screen, current_year){
 	    // ],
 	    series: [{
 	        type: 'bar',
-	        data: population_data,
-	        barWidth: 10, //柱子宽度
+	        data: population_data.population_data[current_year],
+	        // barWidth: 10, //柱子宽度
 	        //barGap: 1, //柱子之间间距
 	        itemStyle: {
 	        	color: '#EA9F04'

@@ -2,20 +2,20 @@
 var myMapChart 
 function map(id, current_screen, current_year){
     current_screen !== 0? $(".mark_city_item").hide():"";
-    var myChart = echarts.init(document.getElementById(id));
+    myMapChart = echarts.init(document.getElementById(id));
 var img = new Image();
 var canvas = document.createElement('canvas');
 var ctx = canvas.getContext('2d');
 
-canvas.width = myChart.getWidth() * window.devicePixelRatio*0.91;
-canvas.height = myChart.getHeight() * window.devicePixelRatio;
+canvas.width = myMapChart.getWidth() * window.devicePixelRatio*0.93;
+canvas.height = myMapChart.getHeight() * window.devicePixelRatio*0.93;
 
 var fullImage = new Image();
 img.onload = function() {
-    ctx.drawImage(img, 15, 60, canvas.width, canvas.height);
+    ctx.drawImage(img, 5, 60, canvas.width, canvas.height);
     fullImage.src = canvas.toDataURL();
     setTimeout(function() {
-        myChart.resize();
+        myMapChart.resize();
     }, 100)
 }
 img.src = './images/qingzang_bg.jpg'
@@ -63,7 +63,7 @@ img.src = './images/qingzang_bg.jpg'
         backgroundColor: {
           type: "pattern",
           repeat: "no-repeat",
-          image: fullImage
+          image: current_screen == 0? fullImage:"",
         },
         visualMap:[ 
             {

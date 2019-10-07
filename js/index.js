@@ -36,7 +36,7 @@ $(function(){
 	});
     //控制时间轴
     myUrbanizationChart.on('timelinechanged', function (params) {
-        current_year = all_yaer[params.currentIndex]
+        current_year = all_year[params.currentIndex]
     });
     myUrbanizationChart.on('timelineplaychanged', function (params) {
         console.log(params);

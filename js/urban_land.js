@@ -1,7 +1,7 @@
 // 城镇用地
 function urban_land(id, current_screen, current_year) {
 	var myChart = echarts.init(document.getElementById(id));
-	var urban_land_data = urbanLandData[current_screen][current_year];
+	var urban_land_data = urbanLandData[current_screen];
 	option = {
 	    title : {
 	        text: '城镇用地',
@@ -60,7 +60,7 @@ function urban_land(id, current_screen, current_year) {
 	                 shadowBlur: 20 //shadowBlur设图形阴影的模糊大小。配合shadowColor,shadowOffsetX/Y, 设置图形的阴影效果。
 	             }
 	         },
-				data: urban_land_data? urban_land_data.urban_land_data: []
+				data: urban_land_data? urban_land_data.urban_land_data[current_year]: []
 			}]
 	};
     myChart.setOption(option, true)
