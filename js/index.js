@@ -67,6 +67,17 @@ $(function(){
         }else{
             start_init.init(0,initial_year);
         }
+        if(index === 0){
+            $("#map").css({
+                background: 'url("./images/qingzang_bg.jpg") 20% 150% no-repeat',
+                backgroundSize: '93% 93%',
+            })
+        }else{
+            $("#map").css({
+                background: 'none',
+                backgroundSize: '93% 93%',
+            })
+        }
         start_init.init(index,initial_year);
         $("#nav li").eq(index).children(".nav_item").addClass("nav_item_active").parent()
             .siblings("li").children(".nav_item").removeClass("nav_item_active");
