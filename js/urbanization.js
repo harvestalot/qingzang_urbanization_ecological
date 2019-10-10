@@ -290,7 +290,7 @@ function urbanization (id, current_screen){
 	                    show: true,
 				    	fontSize:12,
 				    	color:'#fff',
-				    	offset:[25,0],
+				    	offset:[20,20],
 	                    position: 'top',
 	                    formatter: '{c}'
 	                }
@@ -306,7 +306,7 @@ function urbanization (id, current_screen){
 	                    show: true,
 				    	fontSize:12,
 				    	color:'#fff',
-				    	offset:[25,0],
+				    	offset:[20,0],
 	                    position: 'top',
 	                    formatter: '{c}'
 	                }

@@ -3,6 +3,7 @@ $(function(){
     $(".subnav_content > div:first-child").click(function () {
         $(this).parent().siblings(".subnav_content").children(".subnav").stop().slideUp(400);
         $(this).siblings("[name='xz']").slideToggle(400);
+
     });
     // $VerticalMenu_scdj = null;
     // $(".VerticalMenu>div:last-child>div").click(function () {
@@ -33,6 +34,17 @@ $(function(){
                 :(current_year);
             start_init.init_top(current_year);
         },play_interval);
+        if(index === 0){
+            $("#map").css({
+                background: 'url("./images/qingzang_bg.jpg") 20% 150% no-repeat',
+                backgroundSize: '93% 93%',
+            })
+        }else{
+            $("#map").css({
+                background: 'none',
+                backgroundSize: '93% 93%',
+            })
+        }
 	});
     //控制时间轴
     myUrbanizationChart.on('timelinechanged', function (params) {
@@ -47,6 +59,7 @@ $(function(){
     myMapChart.on('click', function (params) {
         var index = 0;
         if(params.data.name === "边境城市带"){
+            index = 3;
         }else if(params.data.name === "拉萨都市圈"){
             index = 1;
         }else if(params.data.name === "兰西城市群"){
@@ -59,5 +72,4 @@ $(function(){
             .siblings("li").children(".nav_item").removeClass("nav_item_active");
     });
 
-        console.log(current_year);
 });

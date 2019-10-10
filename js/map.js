@@ -29,7 +29,7 @@ img.src = './images/qingzang_bg.jpg'
     }else if(current_screen === 1){
         echarts.registerMap('LS', lasa_metropolitan_area_data);
         map_name = 'LS';
-        label_name = "拉萨城市群";
+        label_name = "拉萨城市圈";
     }else if(current_screen === 2){
         echarts.registerMap('LX', lanxi_city_cluster_data);
         map_name = 'LX';
@@ -60,11 +60,11 @@ img.src = './images/qingzang_bg.jpg'
         return res;
     };
     var option = {
-        backgroundColor: {
-          type: "pattern",
-          repeat: "no-repeat",
-          image: current_screen == 0? fullImage:"",
-        },
+        // backgroundColor: {
+        //   type: "pattern",
+        //   repeat: "no-repeat",
+        //   image: current_screen == 0? fullImage:"",
+        // },
         visualMap:[ 
             {
                 type:"piecewise",

@@ -26,6 +26,9 @@
 	vertical-align: middle;
 	display: table-cell;
 	text-align: center;
+	font-size: 14px;
+}
+.nav li a.nav_item{
 	font-size: 18px;
 }
 .nav li:hover .nav_item{
@@ -44,7 +47,7 @@
 	z-index: 9999;
 }
 .subnav_content{
-  	width: 200px;
+  	width: 240px;
   	display: none;
 }
 .subnav_content > div:first-child {
@@ -67,7 +70,7 @@
   transition: transform 0.4s linear;
 }
 .subnav_content > .subnav {
-  width: 200px;
+  width: 240px;
   display: none;
 }
 .subnav_content > .subnav > a {
@@ -137,6 +140,18 @@
 /*.mark_city_box{
 	left: 0;
 	top: 0;
+}*/
+.map{
+	background: url("../images/qingzang_bg.jpg") 20% 150% no-repeat;
+	background-size: 93% 93%;
+}
+/*.map_image{
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	z-index: -1;
 }*/
 .mark_city_item{
 	position: absolute;

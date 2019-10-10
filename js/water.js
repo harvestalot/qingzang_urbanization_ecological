@@ -21,7 +21,7 @@ function water(id, current_screen, current_year){
 	        left: 'center',
 	        text: title_name,
 	        textStyle: {
-	            color: '#3ba0f3',
+	            color: '#EA9F04',
 	            fontStyle: 'normal',
 	            fontWeight: 'normal',
 	            fontSize: 14
