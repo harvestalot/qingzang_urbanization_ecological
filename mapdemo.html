@@ -1,0 +1,84 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width">
+    <title>地图遮罩</title>
+    <style>
+    html,
+    body,
+    #container {
+        margin:0;
+        height: 100%;
+    }
+    </style>
+</head>
+<body>
+<div id="container"></div>
+<script src="https://webapi.amap.com/maps?v=1.4.15&key=c4f16b4da2e9c9023eac7f81d021bb1b&plugin=AMap.DistrictSearch"></script>
+<script>
+    var map = new AMap.Map('container', {
+        zoom:12.6,
+        center:[116.364495,39.930694],
+          pitch: 0,
+        viewMode: '3D',
+        //设置地图背景图 
+        mapStyle:'amap://styles/40035571fa9fdd05a26fe1b05f48fdc9'
+        
+    });
+       //map.setZoom(12.2); //设置地图层级
+    new AMap.DistrictSearch({
+        extensions:'all',
+        subdistrict:0
+    }).search('北京市',function(status,result){
+        // 外多边形坐标数组和内多边形坐标数组
+        var outer = [
+            new AMap.LngLat(-360,90,true),
+            new AMap.LngLat(-360,-90,true),
+            new AMap.LngLat(360,-90,true),
+            new AMap.LngLat(360,90,true),
+        ];
+        var holes = result.districtList[0].boundaries
+ 
+        var pathArray = [
+            outer
+        ];
+        pathArray.push.apply(pathArray,holes)
+        var polygon = new AMap.Polygon( {
+            pathL:pathArray,
+            //线条颜色，使用16进制颜色代码赋值。默认值为#006600
+            strokeColor: 'rgb(20,164,173)',
+            strokeWeight: 4,
+            //轮廓线透明度，取值范围[0,1]，0表示完全透明，1表示不透明。默认为0.9
+            strokeOpacity:0.5,
+            //多边形填充颜色，使用16进制颜色代码赋值，如：#FFAA00
+            fillColor: 'rgba(0,0,0)',
+            //多边形填充透明度，取值范围[0,1]，0表示完全透明，1表示不透明。默认为0.9
+            fillOpacity: 1,
+            //轮廓线样式，实线:solid，虚线:dashed
+            strokeStyle:'dashed',
+            /*勾勒形状轮廓的虚线和间隙的样式，此属性在strokeStyle 为dashed 时有效， 此属性在    
+              ie9+浏览器有效 取值： 
+              实线：[0,0,0] 
+              虚线：[10,10] ，[10,10] 表示10个像素的实线和10个像素的空白（如此反复）组成的虚线
+              点画线：[10,2,10]， [10,2,10] 表示10个像素的实线和2个像素的空白 + 10个像素的实 
+              线和10个像素的空白 （如此反复）组成的虚线*/
+            strokeDasharray:[10,2,10]
+        });
+        polygon.setPath(pathArray);
+        map.add(polygon);
+       /*   var polyline = new AMap.Polyline({
+        strokeColor: '#3366FF',   // 线颜色
+        strokeOpacity: 1,         // 线透明度
+        strokeWeight: 2,          // 线宽
+        strokeStyle: 'solid',     // 线样式
+        strokeDasharray: [10, 5], // 补充线样式
+        geodesic: false            // 绘制大地线
+    });
+       polyline.setPath(pathArray);
+       map.add(polyline);*/  
+    })
+</script>
+</body>
+</html>
