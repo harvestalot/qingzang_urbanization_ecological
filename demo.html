@@ -19,9 +19,9 @@
 ;
         const forest_original_data = []
     //geoJosn
-    for (var i = 0; i < formatData.features.length; i++) {
-        var item = formatData.features[i].properties;
-        forest_original_data.push(formatData.features[i].geometry.coordinates.concat(item.GRID_CODE))
+    for (var i = 0; i < formatData.length; i++) {
+        var item = formatData[i].properties;
+        forest_original_data.push(item.name)
     }
 
 
