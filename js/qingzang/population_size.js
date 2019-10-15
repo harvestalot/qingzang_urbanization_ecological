@@ -2,6 +2,12 @@ $(function(){
 	//人口密度
 	function PopulationSize(){
 		this.years = [ 1990, 2000, 2010, 2015 ];
+		this.map_data = {
+		  	"type": "FeatureCollection",
+		  	"features": [
+  					thrid_pole_boundary_data,
+  				].concat(qingzang_prefecture_level_city, lx_boundary_data, ls_boundary_data, bj_boundary_data)
+		}
 		this.mainMapChart = echarts.init(document.getElementById("population_size"));
 	}
 	PopulationSize.prototype.init = function(){
@@ -9,28 +15,8 @@ $(function(){
 	}
 	//加载基础地图范围
 	PopulationSize.prototype.loadMap = function(){
-        echarts.registerMap('QZ', qingzang_areas_data);
-	    var convertData = function(data) {
-	        // console.log(data)
-	        var res = [];
-	        for (var i = 0; i < data.features.length; i++) {
-	            var city_items = data.features[i].properties;
-	            if(city_items.CityID){
-	                res.push({ name: city_items.name, value: 200});
-	            }else if(city_items.id === 1){
-	                res.push({ name: city_items.name, value: 500});
-	            }else if(city_items.id === 2){
-	                res.push({ name: city_items.name, value: 800});
-	            }else if(city_items.id === -1){
-	                res.push({ name: city_items.name, value: 2000});
-	            }else{
-	                res.push({ name: city_items.name, value: 1000});
-	            }
-	        }
-	        // console.log(res)
-	        return res;
-	    };
-	    optionTimelineMap = {
+        echarts.registerMap('QZ', this.map_data);
+	    var optionTimelineMap = {
             timeline: {
                 data: this.years,
                 axisType: 'category',
@@ -77,9 +63,10 @@ $(function(){
             },
             baseOption: {
 		        geo: {
-		            show: false,
-		            map: 'QZ',
-		            zoom:1.2,
+		            show: true,
+	                name: "青藏研究区域",
+	                map: "QZ",
+		            zoom:1,
 		            label: {
 		                normal: {
 		                    formatter: '{b}',
@@ -90,6 +77,20 @@ $(function(){
 			                show: true
 		                }
 		            },
+		            itemStyle:{
+	                    normal: {
+		                    // show: false,
+	                        areaColor: 'rgba(0,0,0,0)',
+	                        borderColor: '#2185EF',//边界线颜色
+
+	                    },
+	                    emphasis: {
+		                    show: false,
+	                        color: '#00c7ff', //悬浮字体颜色
+	                        areaColor: '#EA9F04'
+	                    }
+		            },
+		            regions: this.getCityColor()
 		        },
             },
             options: []
@@ -105,30 +106,6 @@ $(function(){
                         }
                     },
                 ],
-		        visualMap:[ 
-		            {
-		                type:"piecewise",
-		                show: false,
-		                min: 0,
-		                max: 10,
-		                pieces: [
-		                    {min: 0, max: 100, color: '#F47B7A', colorAlpha: "1"},
-		                    {min: 500, max: 500, color: '#FFE33A', colorAlpha: "1"},
-		                    {min: 800, max: 800, color: '#FF0E96', colorAlpha: "1"},
-		                    {min: 1000, max: 1000, color: '#FF6C0E', colorAlpha: "1"},
-		                    {min: 2000, max: 2000, color: '#d1d1d1', colorAlpha: "0"},
-		                ],
-		                realtime: false,
-		                calculable: true,
-		                // inRange: {
-		                //     color: ['#000','#FFE33A', '#FF0E96', '#FF6C0E'] 
-
-		                // },
-		                textStyle: {
-		                    color: '#fff'
-		                }
-		            },
-		        ],
 		        tooltip: {
 		            show:true,
 		            trigger: 'item',
@@ -138,43 +115,10 @@ $(function(){
 		        },
 		        series: [
 		            {
-		                name: "青藏高原研究区域",
-		                map: "QZ",
-		                type: 'map',
-		                zoom:1.2,
-		                label: {
-		                    normal: {
-		                        show: false,
-		                        // textStyle: {
-		                        //     color: '#fff',
-		                        //     // fontSize:'16'
-		                        // },
-		                        // formatter: function(params){
-		                        //     return (params.name !== "青藏高原研究区域")? params.name:"";
-		                        // }
-		                    },
-		                    emphasis: {
-		                        show:false,
-		                    }
-		                },
-		                itemStyle: {
-		                    normal: {
-		                        areaColor: 'rgba(0,0,0,1)',
-		                        borderColor: '#2185EF',//边界线颜色
-
-		                    },
-		                    emphasis: {
-		                        color: '#00c7ff', //悬浮字体颜色
-		                        areaColor: '#EA9F04'
-		                    }
-		                },
-		                data:convertData(qingzang_areas_data),
-		            }, 
-		            {
 			            name: '人口规模',
 			            type: 'scatter',
 			            coordinateSystem: 'geo',
-			            data: population_size_data[this.years[i]],
+			            data: this.getFormatData(population_size_data[this.years[i]]),
 			            symbolSize: function (val) {
 			                return val[2];
 			            },
@@ -206,6 +150,71 @@ $(function(){
         }
     	this.mainMapChart.setOption(optionTimelineMap,true);
 	}
+	//获取各区域颜色
+	PopulationSize.prototype.getCityColor = function(){
+		var regionColor = [];
+		for(var i = 0; i < this.map_data.features.length; i++){
+			var items = this.map_data.features[i].properties;
+			if(items.fill){
+				regionColor.push({
+				    name: items.name,
+				    itemStyle: {
+				        areaColor: items.fill,
+				        color: items.fill,
+				        opacity:0.7, 
+				    }
+				})
+			}
+		}
+		return regionColor;
+	}
+	//数据格式化
+	PopulationSize.prototype.getFormatData = function(data){
+		var new_data = [];
+		for(var i = 0;  i < data.length; i++){
+			var item = data[i];
+			var value = item.value[2];
+			if(100< value){
+				new_data.push({
+					name:item.name,
+					value:[item.value[0], item.value[1],50]
+				})
+			}
+			else if(50< value && value <100){
+				new_data.push({
+					name:item.name,
+					value:[item.value[0], item.value[1],40]
+				})
+			}else if(20< value && value <50){
+				new_data.push({
+					name:item.name,
+					value:[item.value[0], item.value[1],30]
+				})
+			}else if(10< value && value <20){
+				new_data.push({
+					name:item.name,
+					value:[item.value[0], item.value[1],20]
+				})
+			}else if(5< value && value <10){
+				new_data.push({
+					name:item.name,
+					value:[item.value[0], item.value[1],15]
+				})
+			}else if(1< value && value <5){
+				new_data.push({
+					name:item.name,
+					value:[item.value[0], item.value[1],10]
+				})
+			}else if(value <1){
+				new_data.push({
+					name:item.name,
+					value:[item.value[0], item.value[1],5]
+				})
+			}
+		}
+		return new_data;
+	}
+
 
 	//初始化
 	var	start_init = new PopulationSize();

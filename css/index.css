@@ -143,8 +143,8 @@
 	top: 0;
 }*/
 .map{
-	background: url("../images/qingzang_bg.jpg") 20% 150% no-repeat;
-	background-size: 93% 93%;
+	background: url("../images/qingzang_bg.jpg") 20% 50% no-repeat;
+	background-size: 96% 95%;
 }
 /*.map_image{
 	position: absolute;
@@ -168,17 +168,17 @@
 }
 .lanxi_city_cluster {
 	right: 1%;
-	top: 30%;
+	top: 20%;
 	color: #FFC846;
 }
 .lasa_metropolitan_area{
 	left: 45%;
-	bottom: 30%;
+	bottom: 40%;
 	color: #FF2674;
 }
 .border_city_zone{
 	left: 25%;
-	bottom: 15%;
+	bottom: 25%;
 	color: #FF6C0E;
 }
 /*城镇化指数*/

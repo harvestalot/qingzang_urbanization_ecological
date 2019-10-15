@@ -19,11 +19,49 @@
 ;
         const forest_original_data = []
     //geoJosn
-    for (var i = 0; i < formatData.length; i++) {
-        var item = formatData[i].properties;
-        forest_original_data.push(item.name)
+    // for (var i = 0; i < formatData.length; i++) {
+    //     var item = formatData[i].properties;
+    //     forest_original_data.push(item.name)
+    // }
+    function getFormatData(data){
+        var new_data = [];
+        for(var i = 0;  i < data.length; i++){
+            var item = data[i];
+            var value = item.value[2];
+            if(50< value && value <100){
+                new_data.push({
+                    name:item.name,
+                    value:[item.value[0], item.value[1],50]
+                })
+            }else if(20< value && value <50){
+                new_data.push({
+                    name:item.name,
+                    value:[item.value[0], item.value[1],44]
+                })
+            }else if(10< value && value <20){
+                new_data.push({
+                    name:item.name,
+                    value:[item.value[0], item.value[1],40]
+                })
+            }else if(5< value && value <10){
+                new_data.push({
+                    name:item.name,
+                    value:[item.value[0], item.value[1],35]
+                })
+            }else if(1< value && value <5){
+                new_data.push({
+                    name:item.name,
+                    value:[item.value[0], item.value[1],30]
+                })
+            }else if(value && value <1){
+                new_data.push({
+                    name:item.name,
+                    value:[item.value[0], item.value[1],25]
+                })
+            }
+        }
+        return new_data;
     }
-
 
         // for(var j = 0; j < year_arr.length; j++){
         //     var item_arr = []
@@ -36,7 +74,7 @@
         //     }
         //     new_data[year_arr[j]] = item_arr;
         // }
-        $("#demo").html(JSON.stringify(forest_original_data))
+        $("#demo").html(JSON.stringify(getFormatData(population_size_data["2000"])))
         // $("#demo").html(JSON.stringify({
         //     city_name: city_arr,
         //     urban_land_data: new_data

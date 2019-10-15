@@ -89,8 +89,9 @@ VisualScreen.prototype.urban_land = function(){
 }
 //地图
 VisualScreen.prototype.map = function(){
-    map("map", this.current_screen, this.current_year);
+    // map("map", this.current_screen, this.current_year);
     // initMap();
+    start_init_mainMap.init("map", this.current_screen, this.current_year);
 }
 //水资源
 VisualScreen.prototype.water = function(){

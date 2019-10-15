@@ -36,13 +36,13 @@ $(function(){
         },play_interval);
         if(index === 0){
             $("#map").css({
-                background: 'url("./images/qingzang_bg.jpg") 20% 150% no-repeat',
-                backgroundSize: '93% 93%',
+                background: 'url("./images/qingzang_bg.jpg") 20% 50% no-repeat',
+                backgroundSize: '96% 95%',
             })
         }else{
             $("#map").css({
                 background: 'none',
-                backgroundSize: '93% 93%',
+                backgroundSize: '96% 95%',
             })
         }
 	});
@@ -56,26 +56,26 @@ $(function(){
         var timer_2 = null;
     });
     //点击地图切换
-    myMapChart.on('click', function (params) {
+    start_init_mainMap.myMapChart.on('click', function (params) {
         var index = 0;
-        if(params.data.name === "边境城市带"){
+        if(params.name === "边境城市带"){
             index = 3;
-        }else if(params.data.name === "拉萨都市圈"){
+        }else if(params.name === "拉萨都市圈"){
             index = 1;
-        }else if(params.data.name === "兰西城市群"){
+        }else if(params.name === "兰西城市群"){
             index = 2;
         }else{
             start_init.init(0,initial_year);
         }
         if(index === 0){
             $("#map").css({
-                background: 'url("./images/qingzang_bg.jpg") 20% 150% no-repeat',
-                backgroundSize: '93% 93%',
+                background: 'url("./images/qingzang_bg.jpg") 20% 50% no-repeat',
+                backgroundSize: '96% 95%',
             })
         }else{
             $("#map").css({
                 background: 'none',
-                backgroundSize: '93% 93%',
+                backgroundSize: '96% 95%',
             })
         }
         start_init.init(index,initial_year);
