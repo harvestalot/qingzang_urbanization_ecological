@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>人口规模</title>
+	<title>用地规模</title>
 	<link rel="stylesheet" type="text/css" href="../../css/base.css?2019-10-06">
 	<style type="text/css">
 		.map_legend{
@@ -33,24 +33,14 @@
 			margin: 10px 10px;
 		}
 		.map_legend p:nth-child(4) .map_legend_icon{
-			width: 14px;
-			height: 14px;
-			margin: 8px 8px;
+			width: 20px;
+			height: 20px;
+			margin: 5px 5px;
 		}
 		.map_legend p:nth-child(5) .map_legend_icon{
-			width: 18px;
-			height: 18px;
-			margin: 6px 6px;
-		}
-		.map_legend p:nth-child(6) .map_legend_icon{
-			width: 22px;
-			height: 22px;
-			margin: 4px 4px;
-		}
-		.map_legend p:nth-child(7) .map_legend_icon{
-			width: 26px;
-			height: 26px;
-			margin: 2px 2px;
+			width: 30px;
+			height: 30px;
+			margin: 0 0;
 		}
 		.map_legend .map_legend_text{
 			float: left;
@@ -71,15 +61,13 @@
 	</style>
 </head>
 <body>
-	<div id="population_size" class="population_size w100 h100"></div>
+	<div id="land_use_scale" class="land_use_scale w100 h100"></div>
 	<div id="map_legend" class="map_legend">
 		<p class="clearfix"><span class="map_legend_icon"></span><span class="map_legend_text">&lt; 1</span></p>
 		<p class="clearfix"><span class="map_legend_icon"></span><span class="map_legend_text">1 - 5</span></p>
 		<p class="clearfix"><span class="map_legend_icon"></span><span class="map_legend_text">5 - 10</span></p>
 		<p class="clearfix"><span class="map_legend_icon"></span><span class="map_legend_text">10 - 20</span></p>
-		<p class="clearfix"><span class="map_legend_icon"></span><span class="map_legend_text">20 - 50</span></p>
-		<p class="clearfix"><span class="map_legend_icon"></span><span class="map_legend_text">50 - 100</span></p>
-		<p class="clearfix"><span class="map_legend_icon"></span><span class="map_legend_text">&gt; 100</span></p>
+		<p class="clearfix"><span class="map_legend_icon"></span><span class="map_legend_text">&gt; 20</span></p>
 	</div>
 	<a href="../../index.html" class="go_home">返回</a>
 	<script type="text/javascript" src="../../lib/jquery-3.3.1.min.js?2019-10-06"></script>
@@ -94,7 +82,7 @@
 	<script type='text/javascript' src='../../json/bj_boundary_data.js?2019-10-06' ></script>
 
 
-	<script type='text/javascript' src='../../json/qingzang/population_size_data.js?2019-10-06' ></script>
-	<script type='text/javascript' src="../../js/qingzang/population_size.js?2019-10-06"></script>
+	<script type='text/javascript' src='../../json/qingzang/land_use_scale_data.js?2019-10-06' ></script>
+	<script type='text/javascript' src="../../js/qingzang/land_use_scale.js?2019-10-06"></script>
 </body>
 </html>

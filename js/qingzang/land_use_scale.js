@@ -1,21 +1,21 @@
 $(function(){
-	//人口密度
-	function PopulationSize(){
+	//用地规模
+	function LandUseScale(){
 		this.years = [ 1990, 2000, 2010, 2015 ];
 		this.colors = ["#F6C044",'#F3AD09',"#F18B07",'#F87309'];
 		this.map_data = {
 		  	"type": "FeatureCollection",
 		  	"features": [
   					thrid_pole_boundary_data,
-  				].concat(qingzang_prefecture_level_city, )
+  				].concat(qingzang_prefecture_level_city)
 		}
-		this.mainMapChart = echarts.init(document.getElementById("population_size"));
+		this.mainMapChart = echarts.init(document.getElementById("land_use_scale"));
 	}
-	PopulationSize.prototype.init = function(){
+	LandUseScale.prototype.init = function(){
 		this.loadMap();
 	}
 	//加载基础地图范围
-	PopulationSize.prototype.loadMap = function(){
+	LandUseScale.prototype.loadMap = function(){
         echarts.registerMap('QZ', this.map_data);
 	    var optionTimelineMap = {
             timeline: {
@@ -65,9 +65,8 @@ $(function(){
             baseOption: {
 		        geo: {
 		            show: true,
-	                name: "青藏研究区域",
-	                map: "QZ",
-		            zoom:1,
+		            map: 'QZ',
+		            zoom:1.2,
 		            label: {
 		                normal: {
 		                    formatter: '{b}',
@@ -91,7 +90,6 @@ $(function(){
 	                        areaColor: '#EA9F04'
 	                    }
 		            },
-		            regions: this.getCityColor()
 		        },
             },
             options: []
@@ -108,18 +106,18 @@ $(function(){
                     },
                 ],
 		        tooltip: {
-		            show:false,
+		            show:true,
 		            trigger: 'item',
 		            formatter: function (params) {
-			            return params.value[2]? params.name + ' : ' + params.value[2]+ " 万人": params.name;
+			            return params.value[2]? params.name + ' : ' + params.value[2]: params.name;
 			        }
 		        },
 		        series: [
 		            {
-			            name: '人口规模',
+			            name: '用地规模',
 			            type: 'scatter',
 			            coordinateSystem: 'geo',
-			            data: this.getFormatData(population_size_data[this.years[i]]),
+			            data: this.getFormatData(land_use_scale_data[this.years[i]]),
 			            symbolSize: function (val) {
 			                return val[2];
 			            },
@@ -135,45 +133,10 @@ $(function(){
 			            },
 			            itemStyle: {
 			                normal: {
-		                        color: this.colors[i],
-			                    // borderColor: '#F47B7A',
-			                    // borderWidth: 2,
-			                    // shadowColor: 'rgba(0, 0, 0, 1)',
-			                    // shadowBlur: 30
+		                        color:this.colors[i],
 			                },
 			                emphasis: {
 			                    areaColor: this.colors[i],
-			                }
-			            }
-			        },
-		            {
-			            name: '人口规模',
-			            type: 'scatter',
-			            coordinateSystem: 'geo',
-			            data: this.getFormatData(population_size_data[this.years[1]]),
-			            symbolSize: function (val) {
-			                return val[2];
-			            },
-			            label: {
-			                normal: {
-			                    formatter: '{b}',
-			                    position: 'right',
-			                    show: false
-			                },
-			                emphasis: {
-			                    show: true
-			                }
-			            },
-			            itemStyle: {
-			                normal: {
-		                        color: this.colors[1],
-			                    // borderColor: '#F47B7A',
-			                    // borderWidth: 2,
-			                    // shadowColor: 'rgba(0, 0, 0, 1)',
-			                    // shadowBlur: 30
-			                },
-			                emphasis: {
-			                    areaColor: this.colors[1],
 			                }
 			            }
 			        },
@@ -186,7 +149,7 @@ $(function(){
     	})
 	}
 	//获取各区域颜色
-	PopulationSize.prototype.getCityColor = function(){
+	LandUseScale.prototype.getCityColor = function(){
 		var regionColor = [];
 		for(var i = 0; i < this.map_data.features.length; i++){
 			var items = this.map_data.features[i].properties;
@@ -204,7 +167,7 @@ $(function(){
 		return regionColor;
 	}
 	//数据格式化
-	PopulationSize.prototype.getFormatData = function(data){
+	LandUseScale.prototype.getFormatData = function(data){
 		var new_data = [];
 		for(var i = 0;  i < data.length; i++){
 			var item = data[i];
@@ -250,7 +213,7 @@ $(function(){
 		return new_data;
 	}
 	//加载图例
-	PopulationSize.prototype.loadMapLegend = function(currentIndex){
+	LandUseScale.prototype.loadMapLegend = function(currentIndex){
 		$("#map_legend .map_legend_icon").css({
 			borderColor: this.colors[currentIndex],
 		})
@@ -258,6 +221,6 @@ $(function(){
 
 
 	//初始化
-	var	start_init = new PopulationSize();
+	var	start_init = new LandUseScale();
 	start_init.init();
 })
