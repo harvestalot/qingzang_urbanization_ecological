@@ -146,37 +146,6 @@ $(function(){
 			                }
 			            }
 			        },
-		            {
-			            name: '人口规模',
-			            type: 'scatter',
-			            coordinateSystem: 'geo',
-			            data: this.getFormatData(population_size_data[this.years[1]]),
-			            symbolSize: function (val) {
-			                return val[2];
-			            },
-			            label: {
-			                normal: {
-			                    formatter: '{b}',
-			                    position: 'right',
-			                    show: false
-			                },
-			                emphasis: {
-			                    show: true
-			                }
-			            },
-			            itemStyle: {
-			                normal: {
-		                        color: this.colors[1],
-			                    // borderColor: '#F47B7A',
-			                    // borderWidth: 2,
-			                    // shadowColor: 'rgba(0, 0, 0, 1)',
-			                    // shadowBlur: 30
-			                },
-			                emphasis: {
-			                    areaColor: this.colors[1],
-			                }
-			            }
-			        },
 		        ]
         	});
         }
