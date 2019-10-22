@@ -111,15 +111,16 @@ $(function(){
 		        geo: {
 		            show: true,
 		            map: 'QZ',
-		            zoom:1.2,
+		            zoom:1,
 		            label: {
 		                normal: {
+		                    show: true,
 		                    formatter: '{b}',
-		                    position: 'right',
-		                    show: false
+	                        color: '#999',
 		                },
 		                emphasis: {
-			                show: true
+			                show: true,
+	                        color: '#fff', //悬浮字体颜色
 		                }
 		            },
 		            itemStyle:{
@@ -144,11 +145,16 @@ $(function(){
         	optionTimelineMap.options.push({
         		colors:this.colors,
                 title: [{
-                        text: this.years[i]+"年",
+                        text: "城镇时空分布的核密度",
                         left:20,
                         top:20,
                         textStyle: {
                             color: '#fff',
+                        },
+                        subtext:this.years[i]+"年",
+                        subtextStyle:{
+                        	fontSize:14,
+                            color: '#f1f1f1',
                         }
                     },
                 ],

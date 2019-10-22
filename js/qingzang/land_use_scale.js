@@ -66,15 +66,16 @@ $(function(){
 		        geo: {
 		            show: true,
 		            map: 'QZ',
-		            zoom:1.2,
+		            zoom:1,
 		            label: {
 		                normal: {
+		                    show: true,
 		                    formatter: '{b}',
-		                    position: 'right',
-		                    show: false
+	                        color: '#999',
 		                },
 		                emphasis: {
-			                show: true
+			                show: true,
+	                        color: '#fff', //悬浮字体颜色
 		                }
 		            },
 		            itemStyle:{
@@ -97,11 +98,16 @@ $(function(){
         for (var i = 0; i < this.years.length; i++) {
         	optionTimelineMap.options.push({
                 title: [{
-                        text: this.years[i]+"年",
+                        text: "用地规模时空演变",
                         left:20,
                         top:20,
                         textStyle: {
                             color: '#fff',
+                        },
+                        subtext:this.years[i]+"年",
+                        subtextStyle:{
+                        	fontSize:14,
+                            color: '#f1f1f1',
                         }
                     },
                 ],

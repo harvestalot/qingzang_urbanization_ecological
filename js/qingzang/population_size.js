@@ -70,24 +70,25 @@ $(function(){
 		            zoom:1,
 		            label: {
 		                normal: {
+		                    show: true,
 		                    formatter: '{b}',
-		                    position: 'right',
-		                    show: false
+	                        color: '#999',
 		                },
 		                emphasis: {
-			                show: true
+			                show: true,
+	                        color: '#fff', //悬浮字体颜色
 		                }
 		            },
 		            itemStyle:{
 	                    normal: {
-		                    // show: false,
+		                    show: true,
 	                        areaColor: 'rgba(0,0,0,0)',
 	                        borderColor: '#2185EF',//边界线颜色
 
 	                    },
 	                    emphasis: {
-		                    show: false,
-	                        color: '#00c7ff', //悬浮字体颜色
+		                    show: true,
+	                        color: '#fff', //悬浮字体颜色
 	                        areaColor: '#EA9F04'
 	                    }
 		            },
@@ -99,11 +100,16 @@ $(function(){
         for (var i = 0; i < this.years.length; i++) {
         	optionTimelineMap.options.push({
                 title: [{
-                        text: this.years[i]+"年",
+                        text: "人口规模时空演变",
                         left:20,
                         top:20,
                         textStyle: {
                             color: '#fff',
+                        },
+                        subtext:this.years[i]+"年",
+                        subtextStyle:{
+                        	fontSize:14,
+                            color: '#f1f1f1',
                         }
                     },
                 ],
@@ -125,9 +131,9 @@ $(function(){
 			            },
 			            label: {
 			                normal: {
+			                    show: false,
 			                    formatter: '{b}',
-			                    position: 'right',
-			                    show: false
+			                    position: 'center',
 			                },
 			                emphasis: {
 			                    show: true
